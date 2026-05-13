@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Name | Portfolio</title>
+  <title>Professional Portfolio</title>
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
     }
 
     body {
-      background: #0b1220;
+      background: #0a0f1c;
       color: #e5e7eb;
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* NAV */
     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
       gap: 25px;
-      padding: 15px;
-      position: sticky;
-      top: 0;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
+      padding: 14px;
+      background: rgba(10, 15, 28, 0.8);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid #1f2937;
+      z-index: 100;
     }
 
     nav a {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 14px;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -44,160 +47,251 @@
 
     /* HERO */
     header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, #0f172a, #020617);
+      background: radial-gradient(circle at top, #1e293b, #0a0f1c);
+      padding: 20px;
     }
 
     header h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 60px;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     header p {
-      color: #94a3b8;
+      margin-top: 10px;
       font-size: 18px;
+      color: #94a3b8;
+      animation: fadeIn 1.6s ease-in-out;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #38bdf8;
-      color: #0b1220;
-      border-radius: 8px;
-      text-decoration: none;
+      margin-top: 25px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      border: none;
+      border-radius: 10px;
+      color: #0a0f1c;
       font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
     }
 
     /* SECTIONS */
     section {
-      max-width: 1000px;
+      padding: 100px 20px;
+      max-width: 1100px;
       margin: auto;
-      padding: 60px 20px;
     }
 
     h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #f1f5f9;
+      font-size: 34px;
+      margin-bottom: 30px;
+      position: relative;
     }
 
-    /* CARDS */
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: #38bdf8;
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: #111827;
-      padding: 20px;
-      border-radius: 12px;
       border: 1px solid #1f2937;
-      transition: 0.3s;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.4s;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: slideUp 1s forwards;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: #38bdf8;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    /* SKILLS */
+    .skill {
+      display: inline-block;
+      background: #1e293b;
+      padding: 8px 14px;
+      margin: 6px;
+      border-radius: 20px;
+      font-size: 13px;
+      border: 1px solid #334155;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: #38bdf8;
+      color: #0a0f1c;
     }
 
     /* CONTACT */
     .contact-box {
       background: #111827;
-      padding: 20px;
-      border-radius: 12px;
+      padding: 25px;
+      border-radius: 14px;
       border: 1px solid #1f2937;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: #64748b;
+      padding: 40px;
       border-top: 1px solid #1f2937;
+      color: #64748b;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
 <header>
   <h1>Your Name</h1>
   <p>Senior Software Engineer | Magento | Shopify | WordPress | FastAPI</p>
-  <a class="btn" href="#projects">View Projects</a>
+  <button class="btn">Download CV</button>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
   <h2>About Me</h2>
   <p>
-    I am a Senior Software Engineer specializing in building scalable eCommerce platforms
-    using Magento 2, Shopify, WordPress, and FastAPI. I focus on performance optimization,
-    clean architecture, and modern web solutions.
+    I am a Senior Software Engineer with 7+ years of experience building scalable eCommerce platforms,
+    custom modules, API integrations, and enterprise solutions using Magento 2, Shopify, WordPress,
+    FastAPI, and modern DevOps tools.
   </p>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <h2>Skills</h2>
-  <div class="grid">
-    <div class="card">Magento 2</div>
-    <div class="card">Shopify</div>
-    <div class="card">WordPress</div>
-    <div class="card">FastAPI</div>
-    <div class="card">Docker</div>
-    <div class="card">CI/CD</div>
-    <div class="card">JavaScript</div>
-    <div class="card">Git</div>
+  <div>
+    <span class="skill">Magento 2</span>
+    <span class="skill">Shopify</span>
+    <span class="skill">WordPress</span>
+    <span class="skill">FastAPI</span>
+    <span class="skill">Docker</span>
+    <span class="skill">CI/CD</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">React</span>
+    <span class="skill">MySQL</span>
+    <span class="skill">Git</span>
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>Featured Projects</h2>
 
   <div class="grid">
     <div class="card">
-      <h3>Magento 2 Store</h3>
-      <p>Custom Magento store with performance optimization and extensions integration.</p>
+      <img src="https://via.placeholder.com/600x300" />
+      <div class="card-content">
+        <h3>Magento Enterprise Store</h3>
+        <p>Optimized Magento 2 store with custom modules, checkout optimization, and performance tuning.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Shopify Theme</h3>
-      <p>Fully custom Shopify theme with dynamic metafields and conversion focus.</p>
+      <img src="https://via.placeholder.com/600x300" />
+      <div class="card-content">
+        <h3>Shopify Custom Theme</h3>
+        <p>Modern Shopify theme with dynamic metafields, conversion optimization, and custom sections.</p>
+      </div>
     </div>
 
     <div class="card">
-      <h3>FastAPI System</h3>
-      <p>Multi-tenant backend system with scalable architecture and role-based access.</p>
+      <img src="https://via.placeholder.com/600x300" />
+      <div class="card-content">
+        <h3>FastAPI SaaS Platform</h3>
+        <p>Multi-tenant SaaS system with authentication, role management, and scalable architecture.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="card">
+    <div class="card-content">
+      <h3>Senior Software Engineer</h3>
+      <p>Worked on enterprise Magento, Shopify, and FastAPI systems. Led frontend/backend teams and optimized large-scale eCommerce platforms.</p>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
   <h2>Contact</h2>
-
   <div class="contact-box">
-    <p><strong>Email:</strong> your.email@example.com</p>
-    <p><strong>GitHub:</strong> github.com/yourusername</p>
-    <p><strong>LinkedIn:</strong> linkedin.com/in/yourprofile</p>
+    <p>Email: your.email@example.com</p>
+    <p>GitHub: github.com/yourusername</p>
+    <p>LinkedIn: linkedin.com/in/yourprofile</p>
   </div>
 </section>
 
 <footer>
-  © 2026 Your Name. Built with GitHub Pages.
+  © 2026 Your Name — Built for professional client presentations.
 </footer>
+
+<script>
+  // simple scroll animation
+  const cards = document.querySelectorAll('.card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "translateY(0)";
+      }
+    });
+  });
+
+  cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
